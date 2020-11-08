@@ -1,0 +1,22 @@
+<div class="sidebar-sticky pt-3">
+  <div class="border-bottom">
+    <form>
+      <div class="form-group">
+        <label for="dbControlSelect">Database</label>
+        <select class="form-control" id="dbControlSelect" name="dbControlSelect" (change)="onDatabaseChange()" [(ngModel)]="selectedDatabase" >
+          <option *ngFor="let db of databases" [value]="db">{{db}}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="tableControlSelect">Table</label>
+        <select class="form-control" id="tableControlSelect" name="tableControlSelect" (change)="onTableChange()"  [(ngModel)]="selectedTable">
+          <option *ngFor="let tb of tables" [value]="tb">{{tb}}</option>
+        </select>
+      </div>
+    </form>
+  </div>
+  <div>
+    <h5 class="mt-2">Structure</h5>
+    <app-structure-view></app-structure-view>
+  </div>
+</div>

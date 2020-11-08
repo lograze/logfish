@@ -1,0 +1,3 @@
+<button *ngFor="let f of filters | keyvalue" type="button" class="btn btn-sm btn-info mr-2 mb-1">
+  {{f.key}}={{f.value.value}} <span class="badge badge-light" (click)="removeFilter(f.key)">X</span>
+</button>
