@@ -11,6 +11,7 @@ import { LogExplorerComponent } from './log-explorer/log-explorer.component';
 import { StructureViewComponent } from './sidebar/structure-view/structure-view.component';
 import { FiltersBarComponent } from './log-explorer/filters-bar/filters-bar.component';
 import { StatsBarComponent } from './log-explorer/stats-bar/stats-bar.component';
+import { LogRowComponent } from './log-explorer/log-row/log-row.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { StatsBarComponent } from './log-explorer/stats-bar/stats-bar.component'
     LogExplorerComponent,
     StructureViewComponent,
     FiltersBarComponent,
-    StatsBarComponent
+    StatsBarComponent,
+    LogRowComponent
   ],
   imports: [
     BrowserModule,
