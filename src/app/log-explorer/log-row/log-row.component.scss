@@ -5,6 +5,11 @@
   overflow: hidden;
 }
 
+.full-height {
+  display: inline-block;
+  word-break: break-word;
+}
+
 .expand-btn {
   cursor: pointer;
 }

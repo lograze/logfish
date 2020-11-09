@@ -18,8 +18,4 @@ export class FiltersBarComponent implements OnInit {
       this.filters = fs);
   }
 
-  removeFilter(k): void {
-    this.clickhouseService.removeFilter(k);
-  }
-
 }

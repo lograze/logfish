@@ -17,4 +17,13 @@ export class StatsBarComponent implements OnInit {
     this.clickhouseService.lastQueryStats$.subscribe(stats => this.stats = stats);
   }
 
+  hits(): string {
+    let res = this.stats.rows.toString();
+    if (this.stats.limit_cut) {
+      res += '+';
+    }
+
+    return res;
+  }
+
 }

@@ -1,0 +1,41 @@
+<div class="filter-badge">
+  <ng-template [ngIf]="key">
+    <button type="button" class="btn btn-sm btn-info mr-2 mb-1" (click)="editMode = !editMode">
+      {{key}} {{op}} {{value}} <span class="badge badge-light" (click)="removeFilter(key)">X</span>
+    </button>
+  </ng-template>
+  <ng-template [ngIf]="editMode">
+    <div class="modal-dialog mt-0 mb-0" style="max-width: 800px !important;">
+      <div class="modal-content">
+        <div class="modal-body">
+          <form class="form-inline">
+            <select class="custom-select my-1 mr-sm-2 custom-select-sm" disabled>
+              <option *ngFor="let f of fields" [value]="f.name" [attr.selected]="f.name == key ? true : null">
+                {{f.name}}
+              </option>
+            </select>
+
+            <select class="custom-select my-1 mr-sm-2 custom-select-sm" #filterOp>
+              <option                           [attr.selected]="op == '='        ? true : null" value="=">=</option>
+              <option *ngIf="!isStringFilter()" [attr.selected]="op == '!='       ? true : null" value="!=">!=</option>
+              <option *ngIf="!isStringFilter()" [attr.selected]="op == '>'        ? true : null" value="&gt;">&gt;</option>
+              <option *ngIf="!isStringFilter()" [attr.selected]="op == '>='       ? true : null" value="&gt;=">&gt;=</option>
+              <option *ngIf="!isStringFilter()" [attr.selected]="op == '<'        ? true : null" value="&lt;">&lt;</option>
+              <option *ngIf="!isStringFilter()" [attr.selected]="op == '<='       ? true : null" value="&lt;=">&lt;=</option>
+              <option *ngIf="isStringFilter()"  [attr.selected]="op == 'LIKE'     ? true : null" value="LIKE">LIKE</option>
+              <option *ngIf="isStringFilter()"  [attr.selected]="op == 'NOT LIKE' ? true : null" value="NOT LIKE">NOT LIKE</option>
+            </select>
+
+            <div class="input-group input-group-sm">
+              <input type="text" class="form-control form-control-sm" placeholder="Value" [value]="value" #filterValue>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-sm btn-secondary" (click)="editMode = !editMode">Close</button>
+          <button type="button" class="btn btn-sm btn-primary" (click)="updateFilter(filterValue.value, filterOp.value)">Save</button>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>

@@ -4,6 +4,8 @@ import {ClickhouseService} from '../../_services/clickhouse.service';
 import {Meta} from '../../_models/ClickhouseResponse';
 
 @Component({
+  // used to inject content into <tr> element of log explorer table
+  // tslint:disable-next-line:component-selector
   selector: '[log-row]',
   templateUrl: './log-row.component.html',
   styleUrls: ['./log-row.component.scss']

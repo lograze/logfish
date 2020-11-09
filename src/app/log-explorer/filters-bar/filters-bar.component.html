@@ -1,3 +1,9 @@
-<button *ngFor="let f of filters | keyvalue" type="button" class="btn btn-sm btn-info mr-2 mb-1">
-  {{f.key}}={{f.value.value}} <span class="badge badge-light" (click)="removeFilter(f.key)">X</span>
-</button>
+<div class="d-flex">
+  <ng-template [ngIf]="filters.size == 0">
+    <span>No filters selected</span>
+  </ng-template>
+
+  <ng-template [ngIf]="filters.size > 0">
+    <app-filter-badge *ngFor="let f of filters | keyvalue" [filter]="f.value"></app-filter-badge>
+  </ng-template>
+</div>

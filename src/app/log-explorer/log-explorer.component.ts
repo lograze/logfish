@@ -25,8 +25,4 @@ export class LogExplorerComponent implements OnInit {
     });
   }
 
-  addFilter(k, v): void {
-    this.clickhouseService.updateFilters(k, v, FilterOp.EQ);
-  }
-
 }
