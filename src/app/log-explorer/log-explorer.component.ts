@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ClickhouseService} from '../_services/clickhouse.service';
 import {ClickhouseResponse} from '../_models/ClickhouseResponse';
-import {Filter, FilterOp} from '../_models/Filter';
 
 @Component({
   selector: 'app-log-explorer',
