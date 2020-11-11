@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -15,6 +15,8 @@ import { StatsBarComponent } from './log-explorer/stats-bar/stats-bar.component'
 import { LogRowComponent } from './log-explorer/log-row/log-row.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { FilterBadgeComponent } from './log-explorer/filters-bar/filter-badge/filter-badge.component';
+import { LoadSpinnerComponent } from './topnav/load-spinner/load-spinner.component';
+import { LoadSpinnerInterceptor } from './_interceptors/load-spinner.interceptor';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,7 @@ import { FilterBadgeComponent } from './log-explorer/filters-bar/filter-badge/fi
     StatsBarComponent,
     LogRowComponent,
     FilterBadgeComponent,
+    LoadSpinnerComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,7 +39,9 @@ import { FilterBadgeComponent } from './log-explorer/filters-bar/filter-badge/fi
     FormsModule,
     BsDropdownModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: LoadSpinnerInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

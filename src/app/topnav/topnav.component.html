@@ -1,4 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="#">LogFish <span class="badge badge-warning">Beta</span></a>
-  <span class="ml-auto text-white">version: {{version}}</span>
+  <div class="ml-auto">
+    <app-load-spinner></app-load-spinner>
+    <span class="text-white">version: {{version}}</span>
+  </div>
 </nav>
