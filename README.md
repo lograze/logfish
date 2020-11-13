@@ -1,27 +1,29 @@
-# Logfish
+# LogFish
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.4.
+LogFish is a log explorer Web-based UI which is highly inspired by [Kibana](https://www.elastic.co/kibana) but use [ClickHouse](https://clickhouse.tech/) as a main 
+storage for logs. Even though LogFish is designed to provide better UX for logs investigation in mind, UI itself is pretty generic and can be used to explore and filter 
+content of any table in ClickHouse (however, some features like DateTime selection might not work since they require `timestamp` field to be presented in the table).
+ 
+This project is WIP (early alpha status) and there could be significant changes between releases, therefore be careful when updating and make sure to check release notes.
 
-## Development server
+## Features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+- See databases and tables list
+- Table structure overview
+- Support for quick filters per field (column)
+- DateTime range selection for tables with timestamp field
 
-## Code scaffolding
+## Installation
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+todo
 
-## Build
+## Roadmap
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+- [ ] Support multiple filters for same column (String type mostly)
+- [ ] Draw count histogram for tables with timestamp field
+- [ ] Structure: select columns to change view of log table (single or multiple fields)
+- [ ] Share links with pre-selected database/table/filters
+- [ ] Choose ClickHouse instance dialog (username, password, host)
+- [ ] Google-like search for all String columns
+- [ ] Improve req/res management (cancellation and ordering)
+- [ ] Dockerfile & Helm chart for simple deployments
