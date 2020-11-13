@@ -1,7 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {ClickhouseService} from '../../../_services/clickhouse.service';
-import {Meta} from '../../../_models/ClickhouseResponse';
-import {Filter, filterOpToString, stringToFilterOp} from '../../../_models/Filter';
+import { Component, Input, OnInit } from '@angular/core';
+import { ClickhouseService } from '../../../_services/clickhouse.service';
+import { Meta } from '../../../_models/ClickhouseResponse';
+import { DatePipe } from '@angular/common';
+import { Filter, FilterOp, filterOpToString, stringToFilterOp } from '../../../_models/Filter';
 
 @Component({
   selector: 'app-filter-badge',
@@ -19,7 +20,7 @@ export class FilterBadgeComponent implements OnInit {
   editMode = false;
   fields: Meta[] = [];
 
-  constructor(private clickhouseService: ClickhouseService) { }
+  constructor(private clickhouseService: ClickhouseService, private datePipe: DatePipe) { }
 
   ngOnInit(): void {
     this.key = this.filter.field;
@@ -38,6 +39,11 @@ export class FilterBadgeComponent implements OnInit {
 
   isStringFilter(): boolean {
     return ClickhouseService.isStringType(this.filter);
+  }
+
+  formattedValue(): string {
+    return this.filter.op !== FilterOp.BETWEEN ? this.value :
+      `${this.datePipe.transform(this.value[0], 'short')} AND ${this.datePipe.transform(this.value[1], 'short')}`;
   }
 
 }

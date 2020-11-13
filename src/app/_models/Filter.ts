@@ -6,7 +6,12 @@ export interface Filter {
 }
 
 export enum FilterOp {
-  EQ, NE, LT, LE, GE, GT, LIKE, NOT_LIKE
+  EQ, NE, LT, LE, GE, GT, LIKE, NOT_LIKE, BETWEEN
+}
+
+export interface TimerangeFilter {
+  from: Date;
+  until: Date;
 }
 
 export function stringToFilterOp(raw: string): FilterOp {
@@ -27,6 +32,8 @@ export function stringToFilterOp(raw: string): FilterOp {
       return FilterOp.LIKE;
     case 'NOT LIKE':
       return FilterOp.NOT_LIKE;
+    case 'BETWEEN':
+      return FilterOp.BETWEEN;
     default:
       throw new Error(`cant convert ${raw} into FilterOp`);
   }
@@ -50,6 +57,8 @@ export function filterOpToString(op: FilterOp): string {
       return 'LIKE';
     case FilterOp.NOT_LIKE:
       return 'NOT LIKE';
+    case FilterOp.BETWEEN:
+      return 'BETWEEN';
     default:
       throw new Error(`cant convert ${op} into string`);
   }

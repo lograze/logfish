@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  clickhouseHost: 'http://localhost:8123',
   version: 'dev'
 };
 

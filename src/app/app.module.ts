@@ -1,8 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { DatePipe } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -13,7 +15,6 @@ import { StructureViewComponent } from './sidebar/structure-view/structure-view.
 import { FiltersBarComponent } from './log-explorer/filters-bar/filters-bar.component';
 import { StatsBarComponent } from './log-explorer/stats-bar/stats-bar.component';
 import { LogRowComponent } from './log-explorer/log-row/log-row.component';
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { FilterBadgeComponent } from './log-explorer/filters-bar/filter-badge/filter-badge.component';
 import { LoadSpinnerComponent } from './topnav/load-spinner/load-spinner.component';
 import { LoadSpinnerInterceptor } from './_interceptors/load-spinner.interceptor';
@@ -37,9 +38,11 @@ import { LoadSpinnerInterceptor } from './_interceptors/load-spinner.interceptor
     NgbModule,
     HttpClientModule,
     FormsModule,
-    BsDropdownModule.forRoot()
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule,
   ],
   providers: [
+    DatePipe,
     { provide: HTTP_INTERCEPTORS, useClass: LoadSpinnerInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]

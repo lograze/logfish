@@ -1,6 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {ClickhouseService} from '../_services/clickhouse.service';
-import {ClickhouseResponse} from '../_models/ClickhouseResponse';
+import { Component, OnInit } from '@angular/core';
+import { ClickhouseService } from '../_services/clickhouse.service';
+import { ClickhouseResponse } from '../_models/ClickhouseResponse';
+import { FilterOp } from '../_models/Filter';
 
 @Component({
   selector: 'app-log-explorer',
@@ -22,6 +23,15 @@ export class LogExplorerComponent implements OnInit {
     this.clickhouseService.fetchData().subscribe(rs => {
       this.explorerData = rs;
     });
+  }
+
+  hasTimestampField(): boolean {
+    return this.clickhouseService.hasTimestampField();
+  }
+
+  updateTimeRange(obj): void {
+    const timeRange = obj._selecteds;
+    this.clickhouseService.updateFilters('timestamp', timeRange, FilterOp.BETWEEN);
   }
 
 }

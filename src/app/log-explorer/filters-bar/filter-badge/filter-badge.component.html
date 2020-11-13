@@ -1,7 +1,7 @@
 <div class="filter-badge">
   <ng-template [ngIf]="key">
     <button type="button" class="btn btn-sm btn-info mr-2 mb-1" (click)="editMode = !editMode">
-      {{key}} {{op}} {{value}} <span class="badge badge-light" (click)="removeFilter(key)">X</span>
+      {{key}} {{op}} {{formattedValue()}} <span class="badge badge-light" (click)="removeFilter(key)">X</span>
     </button>
   </ng-template>
   <ng-template [ngIf]="editMode">
@@ -27,7 +27,8 @@
             </select>
 
             <div class="input-group input-group-sm">
-              <input type="text" class="form-control form-control-sm" placeholder="Value" [value]="value" #filterValue>
+              <input type="text" class="form-control form-control-sm"
+                     placeholder="Value" [value]="value" #filterValue (keyup.enter)="updateFilter(filterValue.value, filterOp.value)">
             </div>
           </form>
         </div>
