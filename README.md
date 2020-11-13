@@ -6,6 +6,8 @@ content of any table in ClickHouse (however, some features like DateTime selecti
  
 This project is WIP (early alpha status) and there could be significant changes between releases, therefore be careful when updating and make sure to check release notes.
 
+![screenshot](images/demo-screen.png)
+
 ## Features
 
 - See databases and tables list
