@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "logfish"
+    }
+  },
+  "defaultProject": "logfish",
+  "cli": {
+    "analytics": "4ccebbbf-e55d-4948-bb42-a25bd73a0fdc"
+  }
 }
