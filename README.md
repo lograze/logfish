@@ -29,7 +29,7 @@ npm run start
 * run in docker
 ```
 docker build -t image_name .
-docker run -e CLICKHOUSE_URL='http://clickhouse_endpoint' -d -p 8000:8000 image_name
+docker run -e CLICKHOUSE_URL='http://clickhouse_endpoint' -d -p 5000:5000 image_name
 ```
 
 ## Roadmap
